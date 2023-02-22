@@ -1,0 +1,16 @@
+<div class="container">
+    <mat-form-field appearance="fill">
+        <mat-label>Enter keyword</mat-label>
+        <input matInput #searchString (change)="searchGif(searchString.value)">
+    </mat-form-field>
+    <div class="content">
+        <div *ngFor="let gif of searchedGifs" (click)="openDialog(gif)"
+            [ngClass]="{'selected': selectedGif?.url === gif.url}">
+            <img alt="{{gif.name}}" src="{{gif.url}}">
+        </div>
+        <span *ngIf="searchedGifs.length > 0">
+            <button (click)="loadMore(searchString.value)">Load More</button>
+        </span>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+    </div>
+</div>

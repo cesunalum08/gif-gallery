@@ -1,0 +1,39 @@
+.selected {
+    border: 1px solid blueviolet;
+}
+
+
+.itemList_imageContainer {
+    position: relative;
+    width: fit-content;
+    margin: 0px;
+    overflow: hidden;
+    background: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemImage {
+    /* position: absolute; */
+    top: 0px;
+    left: 0px;
+    height: 75%;
+    width: 100%;
+    margin: auto;
+    object-fit: contain;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.1s;
+    transition-property: opacity;
+}
+
+
+.my-masonry-image-list {
+    column-count: 5;
+}
+
+@media (max-width: 599px) {
+    .my-masonry-image-list {
+        column-count: 3;
+    }
+}

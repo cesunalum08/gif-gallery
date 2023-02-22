@@ -1,0 +1,36 @@
+<!-- <div class="gif-container" cdkDropListGroup>
+    <div cdkDropList [cdkDropListEnterPredicate]="dropListEnterPredicate" (cdkDropListDropped)="dropListDropped()">
+    </div>
+    <div cdkDropList *ngFor="let gif of displayedGifs" [cdkDropListEnterPredicate]="dropListEnterPredicate"
+        (cdkDropListDropped)="dropListDropped()">
+        <div cdkDrag class="gif-box" (cdkDragMoved)="dragMoved($event);">
+            <img src="{{gif.url}}" alt="{{gif.name}}">
+        </div>
+    </div>
+</div> -->
+<div class="container">
+    <span class="fs-4">
+        <form class="w-100 me-3">
+            <input type="search" class="form-control" placeholder="Search stored GIFs" aria-label="Search" #searchString
+                (change)="searchListByString(searchString.value)">
+        </form>
+    </span>
+    <span>
+        <button (click)="openBottomSheet()">Search New GIFs</button>
+    </span>
+    <button (click)="toggleDateFilter()">Toggle Ascending</button>
+    <button (click)="downloadSelected()" *ngIf="selectedGif">Download</button>
+
+
+    <div class="album py-3 bg-light">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-masonry='{"percentPosition": true }'>
+            <div class="col" *ngFor="let gif of displayedGifs" [ngClass]="{'selected': selectedGif?.url === gif.url}">
+                <div class="card shadow-sm">
+                    <div class="itemList_imageContainer" (click)="selectedGif = gif">
+                        <img class="itemImage" src="{{gif.url}}" alt="{{gif.name}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
