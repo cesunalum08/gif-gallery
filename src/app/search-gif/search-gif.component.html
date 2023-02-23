@@ -1,10 +1,13 @@
 <div class="container">
-    <mat-form-field appearance="fill">
-        <mat-label>Enter keyword</mat-label>
+    <mat-form-field appearance="fill" color="primary">
+        <mat-label>Search GIF on GIPHY</mat-label>
         <input matInput #searchString (change)="searchGif(searchString.value)">
     </mat-form-field>
     <div class="content">
-
+        <div class="jumbotron jumbotron-fluid justify-content-center dflex h-100"
+            *ngIf="searchedGifs.length === 0 && !isLoading">
+            <h1 class="align-center">Nothing to show...</h1>
+        </div>
         <mat-grid-list cols="3">
             <mat-grid-tile *ngFor="let gif of searchedGifs" (click)="openDialog(gif)">
                 <img alt="{{gif.name}}" src="{{gif.url}}">
@@ -17,7 +20,7 @@
             <button mat-flat-button (click)="loadMore(searchString.value)">Load more...</button>
         </ng-container>
         <div class="spinner-container" *ngIf="isLoading">
-            <mat-spinner></mat-spinner>
+            <mat-spinner color="accent"></mat-spinner>
         </div>
     </div>
 </div>

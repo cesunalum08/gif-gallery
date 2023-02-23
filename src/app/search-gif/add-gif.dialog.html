@@ -1,10 +1,12 @@
-<h1 mat-dialog-title>Store GIF as</h1>
-<div mat-dialog-content>
-    <mat-form-field appearance="fill" class="gifName">
-        <input matInput [(ngModel)]="data.name">
-    </mat-form-field>
-</div>
-<div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Add</button>
+<div class="container">
+    <h1 mat-dialog-title>Store GIF as</h1>
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill" class="gifName" color="primary">
+            <input matInput [(ngModel)]="data.name">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button [mat-dialog-close]="data.name" color="accent">Add</button>
+    </div>
 </div>

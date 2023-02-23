@@ -1,10 +1,9 @@
-import { Component, HostListener, Inject } from '@angular/core';
-import { Location } from '@angular/common'
+import { Component, Inject } from '@angular/core';
 import { GIFDataService } from '../services/gifdata.service';
 import { GiphyResponseData } from '../models/giphy-response-data';
 import { GifData } from '../models/gif-data';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-search-gif',
@@ -20,10 +19,14 @@ export class SearchGIFComponent {
 
   constructor(
     private readonly _gifDataService: GIFDataService,
-    private readonly _location: Location,
     private _bottomSheetRef: MatBottomSheetRef<SearchGIFComponent>,
     public dialog: MatDialog) { }
 
+  /**
+   * Search GIF using user input
+   * @param searchString 
+   * @param offset 
+   */
   searchGif(searchString: string, offset: number = 0) {
     if (searchString != this._lastSearchedString) {
       this.searchedGifs = [];
@@ -45,15 +48,10 @@ export class SearchGIFComponent {
     this.isLoading = false;
   }
 
-  toggleSelect(gifItem: GiphyResponseData) {
-    gifItem.isSelected = !gifItem.isSelected;
-    if (gifItem.isSelected) {
-      this.selectedGif = gifItem;
-    } else {
-      this.selectedGif = undefined;
-    }
-  }
-
+  /**
+   * Open confirmation dialog upon selecting GIF
+   * @param gif 
+   */
   openDialog(gif: GiphyResponseData): void {
     this.selectedGif = gif;
     const dialogRef = this.dialog.open(AddGifDialog, {
@@ -69,6 +67,9 @@ export class SearchGIFComponent {
     });
   }
 
+  /**
+   * Add GIF to local storage and displayed list
+   */
   addToStorage() {
     if (this.selectedGif) {
       const localGifData = new GifData();
@@ -82,6 +83,10 @@ export class SearchGIFComponent {
     this._bottomSheetRef.dismiss();
   }
 
+  /**
+   * 
+   * @param searchString Load more GIFS
+   */
   loadMore(searchString: string) {
     this.searchGif(searchString, this.searchedGifs.length);
   }

@@ -1,13 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { GIFDataService } from '../services/gifdata.service';
 import { GifData } from '../models/gif-data';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SearchGIFComponent } from '../search-gif/search-gif.component';
 import {
-  CdkDrag,
-  CdkDragStart,
-  CdkDropList, CdkDropListGroup, CdkDragMove, CdkDragEnter,
-  moveItemInArray
+  moveItemInArray,
+  CdkDragDrop
 } from "@angular/cdk/drag-drop";
 
 
@@ -17,19 +15,22 @@ import {
   styleUrls: ['./gifgallery.component.less']
 })
 export class GIFGalleryComponent {
-  @ViewChild(CdkDropListGroup) listGroup!: CdkDropListGroup<CdkDropList>;
-  @ViewChild(CdkDropList) placeholder!: CdkDropList;
-
   public isLoading = false;
   public displayedGifs: GifData[] = [];
-  public ascending = false;
+  public ascending = true;
   public selectedGif?: GifData;
+  private _toggleClick = false;
+  public columnCount = 3;
+
 
   constructor(
     private readonly _gifDataService: GIFDataService,
     private _bottomSheet: MatBottomSheet) {
   }
 
+  /**
+   * Open component 2: Search GIF on GIPHY
+   */
   openBottomSheet(): void {
     this._bottomSheet.open(SearchGIFComponent);
   }
@@ -38,6 +39,9 @@ export class GIFGalleryComponent {
     this.loadAllStoredGifs();
   }
 
+  /**
+   * Initialize all stored GIFs
+   */
   loadAllStoredGifs() {
     this.isLoading = true;
     this._gifDataService.fetchImagesFromLocal();
@@ -45,6 +49,9 @@ export class GIFGalleryComponent {
     this.isLoading = false;
   }
 
+  /**
+   * Ascending / Descending date sort
+   */
   toggleDateFilter() {
     this.ascending = !this.ascending;
     this.displayedGifs.sort((a, b) => {
@@ -70,9 +77,37 @@ export class GIFGalleryComponent {
     this.displayedGifs = this._gifDataService.gifStorage.filter((item: GifData) => item.name.toLowerCase().includes(searchString));
   }
 
+  /**
+   * download the selected GIF
+   */
   downloadSelected() {
     if (this.selectedGif) {
       this._gifDataService.download(this.selectedGif);
     }
   }
+
+  /**
+   * undo click of selected GIF
+   */
+  @HostListener("click")
+  clickedOut() {
+    if (this.selectedGif) {
+      if (this._toggleClick) {
+        this.selectedGif = undefined;
+        this._toggleClick = false;
+      } else {
+        this._toggleClick = true;
+
+      }
+    }
+  }
+
+  /**
+   * Drag & drop event
+   * @param event 
+   */
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.displayedGifs, event.previousIndex, event.currentIndex);
+  }
+
 }
