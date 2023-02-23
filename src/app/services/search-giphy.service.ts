@@ -14,7 +14,7 @@ export class SearchGiphyService {
   constructor(private readonly _http: HttpClient) { }
 
   private _requestHandler(searchString: string, offset: number = 0) {
-    return this._link + `api_key=${this._apiKey}` + `&q=${searchString}` + `&offset=${offset}` + `&limit=10`;
+    return this._link + `api_key=${this._apiKey}` + `&q=${searchString}` + `&offset=${offset}` + `&limit=12`;
 
   }
 

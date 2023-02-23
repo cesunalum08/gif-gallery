@@ -4,13 +4,20 @@
         <input matInput #searchString (change)="searchGif(searchString.value)">
     </mat-form-field>
     <div class="content">
-        <div *ngFor="let gif of searchedGifs" (click)="openDialog(gif)"
-            [ngClass]="{'selected': selectedGif?.url === gif.url}">
+
+        <mat-grid-list cols="3">
+            <mat-grid-tile *ngFor="let gif of searchedGifs" (click)="openDialog(gif)">
+                <img alt="{{gif.name}}" src="{{gif.url}}">
+            </mat-grid-tile>
+        </mat-grid-list>
+        <!-- <div *ngFor="let gif of searchedGifs" (click)="openDialog(gif)">
             <img alt="{{gif.name}}" src="{{gif.url}}">
+        </div> -->
+        <ng-container *ngIf="searchedGifs.length > 0">
+            <button mat-flat-button (click)="loadMore(searchString.value)">Load more...</button>
+        </ng-container>
+        <div class="spinner-container" *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
         </div>
-        <span *ngIf="searchedGifs.length > 0">
-            <button (click)="loadMore(searchString.value)">Load More</button>
-        </span>
-        <mat-spinner *ngIf="isLoading"></mat-spinner>
     </div>
 </div>

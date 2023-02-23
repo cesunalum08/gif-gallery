@@ -15,12 +15,8 @@
                 (change)="searchListByString(searchString.value)">
         </form>
     </span>
-    <span>
-        <button (click)="openBottomSheet()">Search New GIFs</button>
-    </span>
     <button (click)="toggleDateFilter()">Toggle Ascending</button>
     <button (click)="downloadSelected()" *ngIf="selectedGif">Download</button>
-
 
     <div class="album py-3 bg-light">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-masonry='{"percentPosition": true }'>
@@ -32,5 +28,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="fab">
+        <button mat-fab matTooltip="Add new GIF" color="warn" (click)="openBottomSheet()">
+            <mat-icon>add</mat-icon>
+        </button>
     </div>
 </div>

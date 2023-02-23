@@ -1,23 +1,29 @@
-.selected {
-    border: 1px solid blue;
-}
-
 mat-form-field {
-    width: 50%;
+    width: 100%;
     margin-top: 1rem;
 }
 
 .container {
-    width: 100vw;
+    width: 70vw;
 
     .content {
-        align-items: center;
-        text-align: center;
-        justify-content: center;
+        display: grid;
+
     }
 
     ::-webkit-scrollbar {
         display: none;
+    }
+
+    .spinner-container {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    mat-grid-tile {
+        margin: auto;
     }
 }
 
@@ -25,7 +31,9 @@ mat-form-field {
     max-width: 100vw;
     max-height: 70vh;
 
-    ::-webkit-scrollbar {
+    scrollbar-width: 0;
+
+    --webkit-scrollbar {
         display: none;
     }
 }
