@@ -13,8 +13,8 @@ export class SearchGiphyService {
 
   constructor(private readonly _http: HttpClient) { }
 
-  private _requestHandler(searchString: string, offset: number = 0) {
-    return this._link + `api_key=${this._apiKey}` + `&q=${searchString}` + `&offset=${offset}` + `&limit=12`;
+  private _requestHandler(searchString: string, offset: number = 0, limit = 12) {
+    return this._link + `api_key=${this._apiKey}` + `&q=${searchString}` + `&offset=${offset}` + `&limit==${limit}`;
 
   }
 
@@ -24,7 +24,7 @@ export class SearchGiphyService {
     })
   }
 
-  getGifsFromGIPHY(searchString: string, offset?: number): Observable<any> {
-    return this._http.get(this._requestHandler(searchString, offset));
+  getGifsFromGIPHY(searchString: string, offset?: number, limit?: number): Observable<any> {
+    return this._http.get(this._requestHandler(searchString, offset, limit));
   }
 }

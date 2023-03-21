@@ -22,8 +22,8 @@ export class GIFDataService {
     }
   }
 
-  fetchImagesFromAPI(searchString: string, offset: number = 0): Observable<GiphyResponseData[]> {
-    return this._searchGiphy.getGifsFromGIPHY(searchString, offset).pipe(
+  fetchImagesFromAPI(searchString: string, offset: number = 0, limit?: number): Observable<GiphyResponseData[]> {
+    return this._searchGiphy.getGifsFromGIPHY(searchString, offset, limit).pipe(
       map(data => {
         const result: GiphyResponseData[] = [];
         const images = data.data;

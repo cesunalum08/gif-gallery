@@ -1,3 +1,212 @@
+.nav-header {
+    background-color: var(--header-bg-color);
+    border-bottom: 5px solid var(--header-border-color);
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    align-items: center !important;
+
+    .container {
+        background-color: var(--header-bg-color);
+        margin: auto;
+    }
+
+    .primary {
+        color: var(--primary-color);
+    }
+
+    .secondary {
+        color: var(--secondary-font-color);
+    }
+
+    .page-title {
+        display: inline-block;
+
+        .title {
+            font-family: "Century Gothic";
+            font-stretch: ultra-expanded;
+            font-weight: bolder;
+        }
+    }
+
+
+    .example-spacer {
+        flex: 1 1 auto;
+        display: inline-block;
+
+    }
+}
+
+.action_button {
+    padding: 0.75em 1em;
+    font-size: small;
+    font-weight: bolder;
+    display: inline-block;
+    border-radius: 100px;
+    -moz-transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    text-align: center;
+    height: auto;
+    line-height: 1em;
+    margin-left: 10px;
+    color: #fff;
+}
+
+#intro {
+    background: url(https://trustlogin.com/assets/images/index/top_intro_bg.png) top center repeat-x #3c95c1;
+    background-size: auto 100%;
+    border-bottom: 1px solid #d6d6d6;
+    text-align: center;
+    height: 60vh;
+
+    .onboardingcards {
+
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .onboarding-card {
+            // background-color: var(--header-bg-color);
+            background-color: transparent;
+            margin: 6rem 6rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 0.4em;
+            display: block;
+
+            img {
+                object-fit: fill;
+                width: 8vw;
+                height: 8vw;
+            }
+
+            .onboarding-title {
+                font-weight: bolder;
+                color: var(--header-bg-color);
+                font-size: medium;
+            }
+
+            .flying-card {
+                animation: slideInFromTop 1s ease-out 1s;
+
+            }
+
+            .flying-card:nth-of-type(1) {
+                animation-delay: 0.25s;
+            }
+
+            .flying-card:nth-of-type(2) {
+                animation-delay: 0.5s;
+            }
+
+            .flying-card:nth-of-type(3) {
+                animation-delay: 0.75s;
+            }
+
+        }
+
+        .description-cards {
+            font-weight: bolder;
+            color: var(--header-bg-color);
+            font-size: medium;
+        }
+    }
+}
+
+.search-section {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    .gallerySearch {
+        height: 6vh;
+        margin-right: 1em;
+        width: 35%;
+    }
+
+    .mat-mdc-form-field-flex {
+        height: 6vh !important;
+    }
+
+    .searchIcon {
+        color: gray;
+    }
+
+    .search_btns {
+        display: block;
+        font-size: 1em;
+        font-weight: 700;
+        text-align: center;
+        text-indent: 0.05em;
+        letter-spacing: .05em;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        border-radius: 4px;
+        -moz-transition: all .5s ease;
+        -webkit-transition: all .5s ease;
+        transition: all .5s ease;
+        margin: 0.5em;
+    }
+
+    .searchButton {
+        color: #fff;
+    }
+
+    .resetButton {
+        background-color: #fff;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        font-size: small;
+        font-weight: 1000;
+    }
+
+    .unresetButton {
+        background-color: #dbdbdb;
+        color: #fff;
+    }
+}
+
+
+.notfound {
+    position: relative;
+    margin: 1em 2rem;
+    padding: 0.5rem 0;
+    color: var(--warning-color);
+    font-size: 1.15em;
+    text-align: center;
+    border: 1px solid var(--warning-color);
+    background: #fceeec;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.notfound p:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: -2vh;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+    background: url(https://trustlogin.com/service/images/app_notfound_arrow.png) no-repeat;
+    background-size: 1em 2.25vh;
+}
+
 .selected {
     border: 1px solid blueviolet;
 }
@@ -18,13 +227,6 @@
     vertical-align: middle;
     background-color: var(--bs-light);
     color: lightgrey;
-}
-
-.fab {
-    position: fixed;
-    bottom: 2rem;
-    right: 5rem;
-    scale: 1.2;
 }
 
 .card {
@@ -64,8 +266,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: orange;
-        background-color: hsla(0, 0%, 0%, 0.8);
+        color: var(--warning-color);
+        background-color: hsla(357, 89%, 90%, 0.8);
         animation: fadeIn 0.4s;
 
         .fileDownload {
@@ -77,10 +279,10 @@
 
 .itemImage {
     /* position: absolute; */
-    height: 75%;
-    width: 100%;
+    height: 25vh;
+    width: 25vh;
     margin: auto;
-    object-fit: contain;
+    object-fit: cover;
     transition-timing-function: ease-in-out;
     transition-duration: 0.1s;
     transition-property: opacity;

@@ -27,14 +27,14 @@ export class SearchGIFComponent {
    * @param searchString 
    * @param offset 
    */
-  searchGif(searchString: string, offset: number = 0) {
+  searchGif(searchString: string, offset: number = 0, limit?: number) {
     if (searchString != this._lastSearchedString) {
       this.searchedGifs = [];
     }
 
     if (searchString != "") {
       this.isLoading = true;
-      this._gifDataService.fetchImagesFromAPI(searchString, offset).subscribe(results => {
+      this._gifDataService.fetchImagesFromAPI(searchString, offset, limit).subscribe(results => {
         this.searchedGifs = this.searchedGifs.concat(results);
         this.isLoading = false;
         this._lastSearchedString = searchString;

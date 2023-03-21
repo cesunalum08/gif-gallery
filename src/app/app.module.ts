@@ -10,12 +10,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialExampleModule } from './material.module';
+import { GridColsDirective } from './gridCols/grid-cols.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     GIFGalleryComponent,
     SearchGIFComponent,
+    GridColsDirective,
     AddGifDialog
   ],
   imports: [

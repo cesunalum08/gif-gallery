@@ -20,7 +20,9 @@ export class GIFGalleryComponent {
   public ascending = true;
   public selectedGif?: GifData;
   private _toggleClick = false;
-  public columnCount = 3;
+  public columnCount = 6;
+  public searchClicked = false;
+  public lastSearchedString = "";
 
 
   constructor(
@@ -73,6 +75,9 @@ export class GIFGalleryComponent {
       this.displayedGifs = this._gifDataService.gifStorage;
       return;
     }
+
+    this.searchClicked = true;
+    this.lastSearchedString = searchString;
     searchString = searchString.toLowerCase();
     this.displayedGifs = this._gifDataService.gifStorage.filter((item: GifData) => item.name.toLowerCase().includes(searchString));
   }
@@ -84,6 +89,12 @@ export class GIFGalleryComponent {
     if (this.selectedGif) {
       this._gifDataService.download(this.selectedGif);
     }
+  }
+
+  clearSearchBar(searchString: string) {
+    searchString = "";
+    this.searchClicked = false;
+    this.searchListByString(searchString);
   }
 
   /**

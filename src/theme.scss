@@ -1,8 +1,87 @@
 @import '@angular/material/theming';
 @include mat-core();
 
-$my-app-primary: mat-palette($mat-indigo, 900);
-$my-app-accent: mat-palette($mat-orange, 500);
-$my-app-warn: mat-palette($mat-deep-orange);
-$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+$light-blue-palette: (
+    50: #E2F4F9,
+    100: #B6E2EF,
+    200: #8AD0E5,
+    300: #66BDDB,
+    400: #51AFD5,
+    500: #43A2CF,
+    // main
+    600: #3C95C1,
+    700: #3382AE,
+    800: #2F729A,
+    900: #255378,
+    contrast: (50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
+        500: rgba(black, 0.87),
+        600: rgba(black, 0.87),
+        700: rgba(black, 0.87),
+        800: white,
+        900: white)
+);
+
+$orange-secondary-palette: (
+    50: #feebed,
+    100: #fccdcf,
+    200: #ea9a96,
+    300: #de746d,
+    // main
+    400: #e65549,
+    500: #e9492e,
+    600: #db3f2d,
+    700: #c93628,
+    800: #bc2f21,
+    900: #ad2515,
+    contrast: (50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
+        500: rgba(black, 0.87),
+        600: rgba(black, 0.87),
+        700: white,
+        800: white,
+        900: white)
+);
+
+$dark-navy-pallete: (
+    50: #e1f6ff,
+    100: #b4e7ff,
+    200: #81d8ff,
+    300: #4ac9ff,
+    400: #19bcff,
+    500: #00b0ff,
+    600: #00a1f7,
+    700: #008ee2,
+    800: #007dce,
+    //main
+    900: #005bac,
+    contrast: (50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
+        500: rgba(black, 0.87),
+        600: rgba(black, 0.87),
+        700: rgba(black, 0.87),
+        800: rgba(black, 0.87),
+        900: white)
+);
+
+$my-app-primary: mat-palette($light-blue-palette, 600);
+$my-app-accent: mat-palette($dark-navy-pallete, 900);
+$my-app-warn: mat-palette($orange-secondary-palette, 400);
+
+$my-app-theme: mat-light-theme((color: (primary: $my-app-primary,
+                accent: $my-app-accent,
+                warn: $my-app-warn ),
+            typography: define-typography-config(),
+            density: 0,
+        ));
+
 @include angular-material-theme($my-app-theme);
