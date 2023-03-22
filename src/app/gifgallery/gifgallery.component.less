@@ -1,3 +1,28 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.25);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+}
+
 .nav-header {
     background-color: var(--header-bg-color);
     border-bottom: 5px solid var(--header-border-color);
@@ -23,7 +48,6 @@
         display: inline-block;
 
         .title {
-            font-family: "Century Gothic";
             font-stretch: ultra-expanded;
             font-weight: bolder;
         }
@@ -59,6 +83,7 @@
     border-bottom: 1px solid #d6d6d6;
     text-align: center;
     height: 60vh;
+    width: 100%;
 
     .onboardingcards {
 
@@ -74,10 +99,12 @@
             }
         }
 
+
+
         .onboarding-card {
             // background-color: var(--header-bg-color);
             background-color: transparent;
-            margin: 6rem 6rem;
+            margin: 6rem 2rem;
             margin-bottom: 2rem;
             padding: 2rem;
             border-radius: 0.4em;
@@ -96,30 +123,62 @@
             }
 
             .flying-card {
-                animation: slideInFromTop 1s ease-out 1s;
-
+                animation: slideInFromTop 2s ease;
             }
 
-            .flying-card:nth-of-type(1) {
-                animation-delay: 0.25s;
-            }
-
-            .flying-card:nth-of-type(2) {
-                animation-delay: 0.5s;
-            }
-
-            .flying-card:nth-of-type(3) {
-                animation-delay: 0.75s;
+            .description-cards {
+                font-weight: bolder;
+                color: var(--header-bg-color);
+                font-size: medium;
+                animation: fadeIn 3s ease 0s;
             }
 
         }
 
-        .description-cards {
-            font-weight: bolder;
-            color: var(--header-bg-color);
-            font-size: medium;
+        .forward-sign,
+        .forward-sign img {
+            height: 4vw;
+            width: 4vw;
+            margin: 5rem 0rem;
+            padding: 0 !important;
+            transform: scale(1);
+
         }
+
+        .forward-sign {
+            animation: slideInFromTop 2s ease;
+        }
+
+        .pulse {
+            animation: pulse 3s linear infinite;
+        }
+
+        .pulse:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .pulse:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .pulse:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .pulse:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        .pulse:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+
+
+
     }
+
+
 }
 
 .search-section {
@@ -221,7 +280,7 @@
 
 .jumbotron {
     text-align: center;
-    height: 100vh !important;
+    height: 20vh !important;
     display: flex;
     align-items: center;
     vertical-align: middle;
@@ -250,16 +309,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 0.5em;
 
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
 
-        100% {
-            opacity: 1;
-        }
-    }
 
     .card-img-overlay {
         display: flex;

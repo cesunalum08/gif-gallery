@@ -16,6 +16,7 @@ export class SearchGIFComponent {
   public searchedGifs: GiphyResponseData[] = [];
   public selectedGif: GiphyResponseData | undefined;
   private _lastSearchedString = "";
+  public searched = false;
 
   constructor(
     private readonly _gifDataService: GIFDataService,
@@ -33,13 +34,22 @@ export class SearchGIFComponent {
     }
 
     if (searchString != "") {
+      this.searched = true;
       this.isLoading = true;
       this._gifDataService.fetchImagesFromAPI(searchString, offset, limit).subscribe(results => {
         this.searchedGifs = this.searchedGifs.concat(results);
         this.isLoading = false;
         this._lastSearchedString = searchString;
       });
+    } else {
+      this.searched = false;
     }
+  }
+
+  clearSearchBar(searchString: string) {
+    searchString = "";
+    this.searched = false;
+    this.searchGif(searchString);
   }
 
   ngOnDestroy() {

@@ -14,7 +14,7 @@
 
 <section id="intro" class="jumbotron-fluid">
     <div class="row justify-content-center flex onboardingcards">
-        <div class="col-md-auto onboarding-card">
+        <div class="col-md-auto onboarding-card pulse">
             <div class="flying-card">
                 <img src="/assets/images/search_image_light.png">
                 <div class="onboarding-title">検索</div>
@@ -22,7 +22,12 @@
             <br>
             <div class="col-md-auto description-cards">「新規追加」から<br>GIF画像を検索ことができる</div>
         </div>
-        <div class="col-md-auto onboarding-card">
+        <div class="col-md-auto pulse">
+            <div class="forward-sign">
+                <img src="/assets/images/forward-fill-svgrepo-com.svg">
+            </div>
+        </div>
+        <div class="col-md-auto onboarding-card pulse">
             <div class="flying-card">
                 <img src="/assets/images/add_list_light2.png">
                 <div class="onboarding-title">追加</div>
@@ -31,7 +36,12 @@
             <div class="col-md-auto description-cards">画像を選択、<br>リストに追加する</div>
 
         </div>
-        <div class="col-md-auto onboarding-card">
+        <div class="col-md-auto pulse">
+            <div class="forward-sign">
+                <img src="/assets/images/forward-fill-svgrepo-com.svg">
+            </div>
+        </div>
+        <div class="col-md-auto onboarding-card pulse">
             <div class="flying-card">
                 <img src="/assets/images/download_image_light.png">
                 <div class="onboarding-title">ダウンロード</div>
@@ -55,11 +65,11 @@
             (click)="clearSearchBar(searchString.value); searchString.value=''">リセット</button>
     </div>
     <div class="notfound" *ngIf="searchClicked && displayedGifs.length < 1">
-        <p>{{"\"" + lastSearchedString +"\" に該当するアプリケーションは見つかりませんでした。"}}</p>
+        <p>{{"\"" + lastSearchedString +"\" に該当する画像は見つかりませんでした。"}}</p>
     </div>
     <div class="jumbotron jumbotron-fluid justify-content-center dflex h-100"
         *ngIf="!searchClicked && displayedGifs.length === 0">
-        <h1 class="align-center">Nothing to show...</h1>
+        <h1 class="align-center">GIF画像を追加してください</h1>
     </div>
 
     <div class="album py-1 bg-light" *ngIf="displayedGifs.length > 0" CdkDropListGroup>

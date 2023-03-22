@@ -1,23 +1,30 @@
 <div class="container">
-    <mat-form-field appearance="fill" color="primary">
-        <mat-label>Search GIF on GIPHY</mat-label>
-        <input matInput #searchString (change)="searchGif(searchString.value)">
-    </mat-form-field>
-    <div class="content">
-        <div class="jumbotron jumbotron-fluid justify-content-center dflex h-100"
-            *ngIf="searchedGifs.length === 0 && !isLoading">
-            <h1 class="align-center">Nothing to show...</h1>
+    <div class="search-bar row justify-content-center flex">
+        <mat-form-field appearance="fill" color="primary" class="col-md-auto searchForm">
+            <mat-icon matPrefix class="searchIcon">search</mat-icon>
+            <mat-label>キーワードを入力してください</mat-label>
+            <input matInput #searchString (change)="searchGif(searchString.value)">
+        </mat-form-field>
+        <div class="col-md-auto searchButtons">
+            <button class="search_btns resetButton col-md-auto" mat-flat-button
+                (click)="clearSearchBar(searchString.value); searchString.value=''">リセット</button>
         </div>
-        <mat-grid-list cols="3">
-            <mat-grid-tile *ngFor="let gif of searchedGifs" (click)="openDialog(gif)">
-                <img alt="{{gif.name}}" src="{{gif.url}}">
+    </div>
+    <div class="content" *ngIf="searched">
+        <div class="jumbotron jumbotron-fluid justify-content-center dflex h-100"
+            *ngIf="searchedGifs.length === 0 && !isLoading && searched">
+            <h1 class="align-center emptyText">検索結果はありません</h1>
+        </div>
+        <mat-grid-list [gridCols]="{xs: 2, sm: 4, md: 5, lg: 6, xl: 7}" gutterSize="1em">
+            <mat-grid-tile *ngFor="let gif of searchedGifs" (click)="openDialog(gif)" class="searchedImgContainer">
+                <img alt="{{gif.name}}" src="{{gif.url}}" class="searchImg">
             </mat-grid-tile>
         </mat-grid-list>
         <!-- <div *ngFor="let gif of searchedGifs" (click)="openDialog(gif)">
             <img alt="{{gif.name}}" src="{{gif.url}}">
         </div> -->
         <ng-container *ngIf="searchedGifs.length > 0">
-            <button mat-flat-button (click)="loadMore(searchString.value)">Load more...</button>
+            <button mat-flat-button (click)="loadMore(searchString.value)" class="loadMoreButton">Load more...</button>
         </ng-container>
         <div class="spinner-container" *ngIf="isLoading">
             <mat-spinner color="accent"></mat-spinner>

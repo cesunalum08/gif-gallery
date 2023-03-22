@@ -1,12 +1,12 @@
 <div class="container">
-    <h1 mat-dialog-title>Store GIF as</h1>
+    <h1 mat-dialog-title>GIFのキーワードを保存する</h1>
     <div mat-dialog-content>
-        <mat-form-field appearance="fill" class="gifName" color="primary">
-            <input matInput [(ngModel)]="data.name">
+        <mat-form-field appearance="fill" class="saveGifName" color="primary">
+            <input matInput [(ngModel)]="data.name" placeholder="GIFのキーワード">
         </mat-form-field>
     </div>
     <div mat-dialog-actions>
-        <button mat-raised-button (click)="onNoClick()">Cancel</button>
-        <button mat-raised-button [mat-dialog-close]="data.name" color="accent">Add</button>
+        <button mat-raised-button (click)="onNoClick()" color="warn"><b>キャンセル</b></button>
+        <button mat-raised-button [mat-dialog-close]="data.name" color="accent"><b>追加</b></button>
     </div>
 </div>
