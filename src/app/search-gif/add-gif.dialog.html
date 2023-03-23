@@ -6,7 +6,8 @@
         </mat-form-field>
     </div>
     <div mat-dialog-actions>
-        <button mat-raised-button (click)="onNoClick()" color="warn"><b>キャンセル</b></button>
-        <button mat-raised-button [mat-dialog-close]="data.name" color="accent"><b>追加</b></button>
+        <button mat-flat-button [mat-dialog-close]="data.name" color="primary"
+            class="btn primary_button"><b>追加</b></button>
+        <button mat-flat-button (click)="onNoClick()" color="warn" class="btn warning_button"><b>キャンセル</b></button>
     </div>
 </div>

@@ -36,13 +36,6 @@
         margin: auto;
     }
 
-    .primary {
-        color: var(--primary-color);
-    }
-
-    .secondary {
-        color: var(--secondary-font-color);
-    }
 
     .page-title {
         display: inline-block;
@@ -50,6 +43,15 @@
         .title {
             font-stretch: ultra-expanded;
             font-weight: bolder;
+        }
+
+
+        .primary {
+            color: var(--primary-color);
+        }
+
+        .secondary {
+            color: var(--secondary-font-color);
         }
     }
 
@@ -61,21 +63,8 @@
     }
 }
 
-.action_button {
-    padding: 0.75em 1em;
-    font-size: small;
-    font-weight: bolder;
-    display: inline-block;
-    border-radius: 100px;
-    -moz-transition: all .5s ease;
-    -webkit-transition: all .5s ease;
-    transition: all .5s ease;
-    text-align: center;
-    height: auto;
-    line-height: 1em;
-    margin-left: 10px;
-    color: #fff;
-}
+
+
 
 #intro {
     background: url(https://trustlogin.com/assets/images/index/top_intro_bg.png) top center repeat-x #3c95c1;
@@ -203,39 +192,9 @@
         color: gray;
     }
 
-    .search_btns {
-        display: block;
-        font-size: 1em;
-        font-weight: 700;
-        text-align: center;
-        text-indent: 0.05em;
-        letter-spacing: .05em;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        -ms-border-radius: 4px;
-        border-radius: 4px;
-        -moz-transition: all .5s ease;
-        -webkit-transition: all .5s ease;
-        transition: all .5s ease;
-        margin: 0.5em;
-    }
 
-    .searchButton {
-        color: #fff;
-    }
 
-    .resetButton {
-        background-color: #fff;
-        border: 1px solid var(--primary-color);
-        color: var(--primary-color);
-        font-size: small;
-        font-weight: 1000;
-    }
 
-    .unresetButton {
-        background-color: #dbdbdb;
-        color: #fff;
-    }
 }
 
 
@@ -309,7 +268,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0.5em;
+    border-radius: 0.2em;
 
 
 
@@ -338,6 +297,11 @@
     transition-timing-function: ease-in-out;
     transition-duration: 0.1s;
     transition-property: opacity;
+}
+
+.itemImage:hover {
+    opacity: 0.7;
+    cursor: pointer;
 }
 
 .cdk-drag-preview {

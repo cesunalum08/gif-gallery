@@ -6,8 +6,10 @@
         </div>
         <span class="example-spacer"></span>
         <div class="col-md-auto action_buttons">
-            <button class="action_button add" mat-flat-button (click)="openBottomSheet()" color="primary">新規追加</button>
-            <button class="action_button sort" mat-flat-button (click)="toggleDateFilter()" color="warn">順番切り替え</button>
+            <button class="action_button primary_button" mat-flat-button (click)="openBottomSheet()"
+                color="primary">新規追加</button>
+            <button class="action_button warning_button" mat-flat-button (click)="toggleDateFilter()"
+                color="warn">順番切り替え</button>
         </div>
     </mat-toolbar>
 </div>
@@ -59,10 +61,10 @@
             <input matInput placeholder="GIF名を入力してください" #searchString class="searchString">
             <mat-icon matPrefix class="searchIcon">search</mat-icon>
         </mat-form-field>
-        <button class="search_btns searchButton" mat-flat-button (click)="searchListByString(searchString.value)"
-            color="accent">検索</button>
-        <button class="search_btns resetButton" mat-flat-button
-            (click)="clearSearchBar(searchString.value); searchString.value=''">リセット</button>
+        <button class="search_btns searchButton" mat-flat-button
+            (click)="searchListByString(searchString.value)">検索</button>
+        <button class="search_btns" mat-flat-button (click)="clearSearchBar(searchString.value); searchString.value=''"
+            [ngClass]="searchClicked? 'resetButton' : 'unresetButton'">リセット</button>
     </div>
     <div class="notfound" *ngIf="searchClicked && displayedGifs.length < 1">
         <p>{{"\"" + lastSearchedString +"\" に該当する画像は見つかりませんでした。"}}</p>
@@ -77,7 +79,7 @@
             class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" cdkDropList (cdkDropListDropped)="drop($event)">
             <mat-grid-tile *ngFor="let gif of displayedGifs" cdkDrag>
                 <div class="card">
-                    <div class="itemList_imageContainer" (click)="selectedGif = gif">
+                    <div class="itemList_imageContainer" (click)="selectGif(gif)">
                         <img class="itemImage" src="{{gif.url}}" alt="{{gif.name}}">
 
                         <div class="card-img-overlay" *ngIf="selectedGif?.url === gif.url">

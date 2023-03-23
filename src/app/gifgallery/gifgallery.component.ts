@@ -19,10 +19,11 @@ export class GIFGalleryComponent {
   public displayedGifs: GifData[] = [];
   public ascending = true;
   public selectedGif?: GifData;
-  private _toggleClick = false;
   public columnCount = 6;
   public searchClicked = false;
   public lastSearchedString = "";
+  private _preventClickedOut = false;
+  private _toggleClick = false;
 
 
   constructor(
@@ -73,6 +74,7 @@ export class GIFGalleryComponent {
   searchListByString(searchString: string) {
     if (searchString === "") {
       this.displayedGifs = this._gifDataService.gifStorage;
+      this.searchClicked = false;
       return;
     }
 
@@ -97,12 +99,17 @@ export class GIFGalleryComponent {
     this.searchListByString(searchString);
   }
 
+  selectGif(gif: GifData) {
+    this.selectedGif = gif;
+    this._preventClickedOut = true;
+  }
+
   /**
    * undo click of selected GIF
    */
   @HostListener("click")
   clickedOut() {
-    if (this.selectedGif) {
+    if (this.selectedGif && !this._preventClickedOut) {
       if (this._toggleClick) {
         this.selectedGif = undefined;
         this._toggleClick = false;
@@ -110,6 +117,8 @@ export class GIFGalleryComponent {
         this._toggleClick = true;
 
       }
+    } else {
+      this._preventClickedOut = false;
     }
   }
 

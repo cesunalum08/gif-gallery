@@ -1,5 +1,14 @@
 html,
 body {
+
+    --header-bg-color: #fafafa;
+    --header-border-color: #000;
+    --secondary-font-color: #3A0216;
+    --body-bg-color: #f2f2f2;
+    --primary-color: #3C95C1;
+    --accent-color: #005bac;
+    --warning-color: #e65549;
+
     height: 100%;
 
     ::-webkit-scrollbar {
@@ -20,13 +29,6 @@ body {
         display: none !important;
     }
 
-    --header-bg-color: #fafafa;
-    --header-border-color: #000;
-    --secondary-font-color: #3A0216;
-    --body-bg-color: #f2f2f2;
-    --primary-color: #3C95C1;
-    --accent-color: #005bac;
-    --warning-color: #e65549;
 
     .mat-mdc-form-field-focus-overlay {
         background-color: var(--header-bg-color) !important;
@@ -40,6 +42,8 @@ body {
         padding: unset;
     }
 
+
+
     .search-section {
         .mat-mdc-form-field-flex {
             height: 6vh !important;
@@ -49,6 +53,121 @@ body {
             padding-top: 0.5em !important;
         }
     }
+
+    .btn {
+        -moz-transition: all .5s ease;
+        -webkit-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+
+    .search_btns {
+        display: block;
+        font-size: 1em;
+        font-weight: 700;
+        text-align: center;
+        text-indent: 0.05em;
+        letter-spacing: .05em;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        border-radius: 4px;
+        -moz-transition: all .5s ease;
+        -webkit-transition: all .5s ease;
+        transition: all .5s ease;
+        margin: 0.5em;
+    }
+
+    .searchButton {
+        color: #fff !important;
+        background-color: #4970bf !important;
+    }
+
+    .searchButton:hover {
+        background-color: #2b52a1 !important;
+    }
+
+    .resetButton {
+        background-color: #fff;
+        border: 1px solid var(--primary-color) !important;
+        color: var(--primary-color) !important;
+        font-size: small;
+        font-weight: 1000;
+    }
+
+    .unresetButton {
+        background-color: #dbdbdb !important;
+        border-color: #dbdbdb !important;
+        color: #fff !important;
+        pointer-events: none;
+    }
+
+    .action_button {
+        padding: 0.75em 1em;
+        font-size: small;
+        font-weight: bolder;
+        display: inline-block;
+        border-radius: 100px;
+        -moz-transition: all .5s ease;
+        -webkit-transition: all .5s ease;
+        transition: all .5s ease;
+        text-align: center;
+        height: auto;
+        line-height: 1em;
+        margin-left: 10px;
+        color: #fff;
+    }
+
+    .primary_button:hover {
+        background-color: #fff;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+    }
+
+    .warning_button:hover {
+        background-color: #fff;
+        border: 1px solid var(--warning-color);
+        color: var(--warning-color);
+    }
+
+    .search_btns {
+        display: block;
+        font-size: 1em;
+        font-weight: 700;
+        text-align: center;
+        text-indent: 0.05em;
+        letter-spacing: .05em;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        border-radius: 4px;
+        -moz-transition: all .5s ease;
+        -webkit-transition: all .5s ease;
+        transition: all .5s ease;
+        margin: 0.5em;
+    }
+
+    .searchButton {
+        color: #fff;
+        background-color: #4970bf;
+    }
+
+    .searchButton:hover {
+        background-color: var(--accent-color);
+    }
+
+    .resetButton {
+        background-color: #fff;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        font-size: small;
+        font-weight: 1000;
+    }
+
+    .unresetButton {
+        background-color: #dbdbdb;
+        color: #fff;
+    }
+
 
     .saveGifName {
         width: 100%;

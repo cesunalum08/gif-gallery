@@ -3,11 +3,16 @@
         <mat-form-field appearance="fill" color="primary" class="col-md-auto searchForm">
             <mat-icon matPrefix class="searchIcon">search</mat-icon>
             <mat-label>キーワードを入力してください</mat-label>
-            <input matInput #searchString (change)="searchGif(searchString.value)">
+            <input matInput #searchString>
         </mat-form-field>
         <div class="col-md-auto searchButtons">
+            <button class="search_btns searchButton col-md-auto" mat-flat-button
+                (click)="searchGif(searchString.value)">検索</button>
+        </div>
+        <div class="col-md-auto searchButtons">
             <button class="search_btns resetButton col-md-auto" mat-flat-button
-                (click)="clearSearchBar(searchString.value); searchString.value=''">リセット</button>
+                (click)="clearSearchBar(searchString.value); searchString.value=''"
+                [ngClass]="searched? 'resetButton' : 'unresetButton'">リセット</button>
         </div>
     </div>
     <div class="content" *ngIf="searched">
